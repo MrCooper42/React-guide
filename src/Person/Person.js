@@ -8,10 +8,11 @@ export const Person = (props) => {
     name,
     children,
     changed,
+    click,
   } = props;
   return (
     <div className="Person">
-      <p onClick={props.click}>I'm a {name} and I am {age} years old!</p>
+      <p onClick={click}>I'm a {name} and I am {age} years old!</p>
       <p>{children}</p>
       <input type="text" onChange={changed} value={name}/>
     </div>
