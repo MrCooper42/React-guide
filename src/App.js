@@ -13,17 +13,6 @@ class App extends Component {
     showPersons: false,
   };
   
-  switchNameHandler = (newName) => {
-    
-    this.setState({
-      persons: [
-        {name: newName, age: 29},
-        {name: "Rio", age: 28},
-        {name: "Roldan", age: 29},
-      ],
-    });
-  };
-  
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex((person) => {
       return person.id === id;
@@ -66,7 +55,8 @@ class App extends Component {
   
   render() {
     const style = {
-      backgroundColor: "white",
+      backgroundColor: "green",
+      color: "white",
       font: "inherit",
       fontcolor: "white",
       border: "1px solid blue",
@@ -98,6 +88,7 @@ class App extends Component {
             })}
         </div>
       );
+      style.backgroundColor = "red";
     }
     
     return (
