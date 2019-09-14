@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./Person.css";
+import "./Person.module.css";
 
 export const Person = (props) => {
   const {
