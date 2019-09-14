@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./Person.module.css";
+import styles from "./Person.module.css";
 
 export const Person = (props) => {
   const {
@@ -10,13 +10,9 @@ export const Person = (props) => {
     changed,
     click,
   } = props;
-  const style = {
-    "@media (min-width: 500px)": {
-      width: "450px",
-    },
-  };
+  
   return (
-    <div className="Person" style={style}>
+    <div className={styles.Person}>
       <p onClick={click}>I'm a {name} and I am {age} years old!</p>
       <p>{children}</p>
       <input type="text" onChange={changed} value={name}/>
