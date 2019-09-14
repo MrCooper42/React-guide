@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import styles from "./App.module.css";
+import {ErrorBoundry} from "./ErrorBoundry/ErrorBoundry";
 import {Person} from "./Person/Person";
 
 class App extends Component {
@@ -67,15 +68,16 @@ class App extends Component {
                 age,
                 id,
               } = person;
-              return <Person
-                click={() => this.deletePersonHandler(index)}
-                name={name}
-                age={age}
-                key={id}
-                changed={(event) => {
-                  this.nameChangedHandler(event, person.id);
-                }}
-              />;
+              return <ErrorBoundry key={id}>
+                <Person
+                  click={() => this.deletePersonHandler(index)}
+                  name={name}
+                  age={age}
+                  changed={(event) => {
+                    this.nameChangedHandler(event, person.id);
+                  }}
+                />
+              </ErrorBoundry>;
             })}
         </div>
       );
