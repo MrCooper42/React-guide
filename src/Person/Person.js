@@ -1,8 +1,9 @@
+import Radium from "radium";
 import React from "react";
 
 import "./Person.css";
 
-export const Person = (props) => {
+export const Person = Radium((props) => {
   const {
     age,
     name,
@@ -17,4 +18,4 @@ export const Person = (props) => {
       <input type="text" onChange={changed} value={name}/>
     </div>
   );
-};
+});
