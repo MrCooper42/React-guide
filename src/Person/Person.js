@@ -16,7 +16,7 @@ export const Person = (props) => {
     },
   };
   return (
-    <div className="Person" style={style }>
+    <div className="Person" style={style}>
       <p onClick={click}>I'm a {name} and I am {age} years old!</p>
       <p>{children}</p>
       <input type="text" onChange={changed} value={name}/>
