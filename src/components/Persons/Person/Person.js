@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import AuthContext from '../../../context/auth-context';
 import { Auxillary } from '../../../higherOrderComponents/Auxillary';
 import { withClass } from '../../../higherOrderComponents/withClass';
 import styles from './Person.module.css';
@@ -22,6 +23,11 @@ class Person extends Component {
     return (
       // could also just use React.Fragment or import Fragment to avoid dot notation
       <Auxillary>
+        <AuthContext.Consumer>
+          {context =>
+            context.authenticated ? <p>Authenticated!</p> : <p>Please log in</p>
+          }
+        </AuthContext.Consumer>
         <p key="i1" onClick={click}>
           I'm a {name} and I am {age} years old!
         </p>
@@ -43,7 +49,8 @@ Person.propTypes = {
   click: PropTypes.func,
   name: PropTypes.string,
   age: PropTypes.number,
-  changed: PropTypes.func
+  changed: PropTypes.func,
+  isAuth: PropTypes.bool
 };
 
 export default withClass(Person, styles.Person);
