@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Cockpit } from '../components/Cockpit/Cockpit';
 import { Persons } from '../components/Persons/Persons';
+import { Auxillary } from '../higherOrderComponents/Auxillary';
+import { withClass } from '../higherOrderComponents/withClass';
 import styles from './App.module.css';
 
 class App extends Component {
@@ -93,7 +95,7 @@ class App extends Component {
     }
 
     return (
-      <div className={styles.App}>
+      <Auxillary styles={styles.App}>
         <button
           onClick={() => {
             this.setState({ showCockpit: !this.state.showCockpit });
@@ -110,9 +112,9 @@ class App extends Component {
           />
         ) : null}
         {persons}
-      </div>
+      </Auxillary>
     );
   }
 }
 
-export default App;
+export default withClass(App, styles.App);

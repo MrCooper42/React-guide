@@ -1,26 +1,22 @@
-import React, {Component} from "react";
-
-import styles from "./Person.module.css";
+import React, { Component } from 'react';
+import { Auxillary } from '../../../higherOrderComponents/Auxillary';
+import styles from './Person.module.css';
 
 export class Person extends Component {
-  
   render() {
-    console.log("[Person.js] rendering...");
-    
-    const {
-      age,
-      name,
-      children,
-      changed,
-      click,
-    } = this.props;
-    
+    console.log('[Person.js] rendering...');
+
+    const { age, name, children, changed, click } = this.props;
+
     return (
-      <div className={styles.Person}>
-        <p onClick={click}>I'm a {name} and I am {age} years old!</p>
-        <p>{children}</p>
-        <input type="text" onChange={changed} value={name}/>
-      </div>
+      // could also just use React.Fragment or import Fragment to avoid dot notation
+      <Auxillary>
+        <p key="i1" onClick={click}>
+          I'm a {name} and I am {age} years old!
+        </p>
+        ,<p key="i2">{children}</p>,
+        <input key="i3" type="text" onChange={changed} value={name} />,
+      </Auxillary>
     );
   }
-};
+}
