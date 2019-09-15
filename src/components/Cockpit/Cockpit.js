@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from './Cockpit.module.css';
 
 export const Cockpit = React.memo(props => {
+  const toggleBtnRef = useRef(null);
+
   useEffect(() => {
     console.log('[Cockpit.js] useEffect');
     // Http request...
-    setTimeout(() => {
-      alert('Saved data to the cloud');
-    }, 1000);
+    // setTimeout(() => {
+    //   alert('Saved data to the cloud');
+    // }, 1000);
+    toggleBtnRef.current.click();
     return () => {
       console.log('[Cockpit.js] cleanup work in useEffect');
     };
@@ -39,7 +42,7 @@ export const Cockpit = React.memo(props => {
     <div className={styles.Cockpit}>
       <h1>{title}</h1>
       <p className={assignedStyles.join(' ')}>This is really working!</p>
-      <button className={btnClass} onClick={clicked}>
+      <button ref={toggleBtnRef} className={btnClass} onClick={clicked}>
         Toggle Persons
       </button>
     </div>
