@@ -1,10 +1,19 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Auxillary } from '../../../higherOrderComponents/Auxillary';
 import { withClass } from '../../../higherOrderComponents/withClass';
 import styles from './Person.module.css';
-import PropTypes from 'prop-types';
 
 class Person extends Component {
+  constructor(props) {
+    super(props);
+    this.inputElement = React.createRef();
+  }
+
+  componentDidMount() {
+    this.inputElement.current.focus();
+  }
+
   render() {
     console.log('[Person.js] rendering...');
 
@@ -17,7 +26,14 @@ class Person extends Component {
           I'm a {name} and I am {age} years old!
         </p>
         <p key="i2">{children}</p>
-        <input key="i3" type="text" onChange={changed} value={name} />
+        <input
+          key="i3"
+          // ref={(inputEl) => {this.inputElement = inputEl}} older approach
+          ref={this.inputElement}
+          type="text"
+          onChange={changed}
+          value={name}
+        />
       </Auxillary>
     );
   }
