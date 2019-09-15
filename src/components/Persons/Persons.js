@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Person } from './Person/Person';
 
-export class Persons extends Component {
+export class Persons extends PureComponent {
   // NOTE: This will throw error as no state has been set at this point
   // static getDerivedStateFromProps(props, state) {
   //   console.log("[Persons.js] getDerivedStateFromProps");
@@ -12,13 +12,16 @@ export class Persons extends Component {
     console.log('[Person.js] componentWillUnmount');
   }
 
-  shouldComponentUpdate(nextProps, nextState, nextContext) {
-    console.log('[Persons.js] shouldComponentUpdate');
-    if (nextProps.persons !== this.props.persons) {
-      return true;
-    }
-    return false;
-  }
+  // NOTE = Use this if not using pure component
+  // shouldComponentUpdate(nextProps, nextState, nextContext) {
+  //   console.log('[Persons.js] shouldComponentUpdate');
+  //   if (nextProps.persons !== this.props.persons ||
+  //   nextProps.changed !== this.props.changed ||
+  //   nextProps.clicked !== this.props.clicked) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
     console.log('[Persons.js] getSnapshotBeforeUpdate');
