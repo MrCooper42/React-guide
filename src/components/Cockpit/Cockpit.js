@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styles from './Cockpit.module.css';
 
-export const Cockpit = props => {
+export const Cockpit = React.memo(props => {
   useEffect(() => {
     console.log('[Cockpit.js] useEffect');
     // Http request...
@@ -21,17 +21,17 @@ export const Cockpit = props => {
   });
 
   const assignedStyles = [];
-  const { persons, showPersons, clicked, title } = props;
+  const { personsLength, showPersons, clicked, title } = props;
   let btnClass = '';
 
   if (showPersons) {
     btnClass = styles.Red;
   }
-  if (persons.length <= 2) {
+  if (personsLength <= 2) {
     assignedStyles.push(styles.red);
   }
 
-  if (persons.length <= 1) {
+  if (personsLength <= 1) {
     assignedStyles.push(styles.bold);
   }
 
@@ -44,4 +44,4 @@ export const Cockpit = props => {
       </button>
     </div>
   );
-};
+});
