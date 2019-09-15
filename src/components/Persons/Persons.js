@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Person } from './Person/Person';
+import Person from './Person/Person';
 
 export class Persons extends PureComponent {
   // NOTE: This will throw error as no state has been set at this point

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Auxillary } from '../../../higherOrderComponents/Auxillary';
+import { withClass } from '../../../higherOrderComponents/withClass';
 import styles from './Person.module.css';
 
-export class Person extends Component {
+class Person extends Component {
   render() {
     console.log('[Person.js] rendering...');
 
@@ -14,9 +15,11 @@ export class Person extends Component {
         <p key="i1" onClick={click}>
           I'm a {name} and I am {age} years old!
         </p>
-        ,<p key="i2">{children}</p>,
-        <input key="i3" type="text" onChange={changed} value={name} />,
+        <p key="i2">{children}</p>
+        <input key="i3" type="text" onChange={changed} value={name} />
       </Auxillary>
     );
   }
 }
+
+export default withClass(Person, styles.Person);
