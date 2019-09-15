@@ -8,7 +8,8 @@ export const Cockpit = (props) => {
   const {
     persons,
     showPersons,
-    clicked
+    clicked,
+    title,
   } = props;
   
   if (showPersons) {
@@ -24,7 +25,7 @@ export const Cockpit = (props) => {
   
   return (
     <div className={styles.Cockpit}>
-      <h1>Hi, I'm a React App</h1>
+      <h1>{title}</h1>
       <p className={assignedStyles.join(" ")}>This is really working!</p>
       <button
         className={btnClass}

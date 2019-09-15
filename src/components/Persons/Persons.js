@@ -1,8 +1,16 @@
 import React from "react";
 import {Person} from "./Person/Person";
 
-export const Persons = (props) => (
-  props.persons.map((person, index, arr) => {
+export const Persons = (props) => {
+  console.log("[Persons.js] rendering...");
+  
+  const {
+    persons,
+    clicked,
+    changed,
+  } = props;
+  
+  return persons.map((person, index, arr) => {
     const {
       name,
       age,
@@ -10,11 +18,11 @@ export const Persons = (props) => (
     } = person;
     
     return <Person
-      click={() => props.clicked(index)}
+      click={() => clicked(index)}
       name={name}
       age={age}
       key={id}
-      changed={(event) => props.changed(event, person.id)}
+      changed={(event) => changed(event, person.id)}
     />;
-  })
-);
+  });
+};
