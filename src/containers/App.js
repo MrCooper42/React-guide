@@ -1,7 +1,7 @@
 import React, {Component} from "react";
+import {Cockpit} from "../components/Cockpit/Cockpit";
+import {Persons} from "../components/Persons/Persons";
 import styles from "./App.module.css";
-import {ErrorBoundry} from "./ErrorBoundry/ErrorBoundry";
-import {Person} from "./Person/Person";
 
 class App extends Component {
   state = {
@@ -18,8 +18,6 @@ class App extends Component {
     const personIndex = this.state.persons.findIndex((person) => {
       return person.id === id;
     });
-    
-    // const person = Object.assign({}, this.state.persons[personIndex])
     
     const person = {
       ...this.state.persons[personIndex],
@@ -56,56 +54,23 @@ class App extends Component {
   
   render() {
     let persons = null;
-    let btnClass = "";
     
     if (this.state.showPersons) {
-      persons = (
-        <div>
-          {
-            this.state.persons.map((person, index, arr) => {
-              const {
-                name,
-                age,
-                id,
-              } = person;
-              return <ErrorBoundry key={id}>
-                <Person
-                  click={() => this.deletePersonHandler(index)}
-                  name={name}
-                  age={age}
-                  changed={(event) => {
-                    this.nameChangedHandler(event, person.id);
-                  }}
-                />
-              </ErrorBoundry>;
-            })}
-        </div>
-      );
-      btnClass = styles.Red;
-    } else {
-      btnClass = "";
+      persons = <Persons
+        persons={this.state.persons}
+        clicked={this.deletePersonHandler}
+        changed={this.nameChangedHandler}
+      />;
     }
     
-    const assignedStyles = [];
-    
-    if (this.state.persons.length <= 2) {
-      assignedStyles.push(styles.red);
-    }
-    
-    if (this.state.persons.length <= 1) {
-      assignedStyles.push(styles.bold);
-    }
     
     return (
       <div className={styles.App}>
-        <h1>Hi, I'm a React App</h1>
-        <p className={assignedStyles.join(" ")}>This is really working!</p>
-        <button
-          className={btnClass}
-          onClick={() => this.togglePersonsHandler()}
-        >
-          Toggle Persons
-        </button>
+        <Cockpit
+          showPersons={this.state.showPersons}
+          persons={this.state.persons}
+          clicked={this.togglePersonsHandler}
+        />
         {persons}
       </div>
     );

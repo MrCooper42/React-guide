@@ -11,12 +11,6 @@ export const Person = (props) => {
     click,
   } = props;
   
-  const random = Math.random();
-  
-  if (random > 0.7) {
-    throw new Error("Something bad happened");
-  }
-  
   return (
     <div className={styles.Person}>
       <p onClick={click}>I'm a {name} and I am {age} years old!</p>
